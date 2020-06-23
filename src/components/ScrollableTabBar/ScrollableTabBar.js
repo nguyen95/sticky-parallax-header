@@ -83,7 +83,8 @@ class ScrollableTabBar extends React.PureComponent {
       tabTextContainerActiveStyle,
       tabsContainerBackgroundColor,
       tabWrapperStyle,
-      tabsContainerStyle
+      tabsContainerStyle,
+      headerContent
     } = this.props
     const { tabUnderlineWidth } = this.state
 
@@ -113,6 +114,7 @@ class ScrollableTabBar extends React.PureComponent {
           }
         ]}
       >
+        {headerContent}
         <ScrollView
           style={styles.nestedStyle}
           contentContainerStyle={[styles.contentContainer, tabsContainerStyle]}

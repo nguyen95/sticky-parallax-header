@@ -22,6 +22,7 @@ import {
 import { ScrollableTabBar, ScrollableTabView } from './components'
 import { constants } from './constants'
 import styles from './styles'
+import { themes } from '../../../app/themes'
 
 const { divide, Value, createAnimatedComponent, event, timing, ValueXY } = Animated
 const AnimatedScrollView = createAnimatedComponent(ScrollView)
@@ -133,7 +134,7 @@ class StickyParallaxHeader extends Component {
   onChangeTabHandler = (tab) => {
     const { onChangeTab } = this.props
 
-    return onChangeTab && onChangeTab(tab)
+    return onChangeTab && onChangeTab(tab, this.scroll)
   }
 
   onLayout = (e) => {
@@ -265,7 +266,8 @@ class StickyParallaxHeader extends Component {
       tabTextContainerActiveStyle,
       tabsContainerBackgroundColor,
       tabWrapperStyle,
-      tabsContainerStyle
+      tabsContainerStyle,
+      headerContent
     } = this.props
     const { scrollValue, currentPage, containerWidth } = this.state
 
@@ -281,7 +283,8 @@ class StickyParallaxHeader extends Component {
       tabsContainerBackgroundColor,
       tabs,
       tabWrapperStyle,
-      tabsContainerStyle
+      tabsContainerStyle,
+      headerContent
     }
 
     return <ScrollableTabBar {...props} />
@@ -345,7 +348,7 @@ class StickyParallaxHeader extends Component {
             }
           )}
         >
-          <View style={{ height: parallaxHeight }} onLayout={(e) => this.onLayout(e)}>
+          <View style={{ height: parallaxHeight }} >
             <View
               style={[
                 styles.overScrollPadding,
@@ -383,6 +386,16 @@ class StickyParallaxHeader extends Component {
                 </View>
               ))}
           </ScrollableTabView>
+          <View
+            style={{
+              backgroundColor: 'white',
+              height: 1000,
+              position: 'absolute',
+              bottom: -1000,
+              left: 0,
+              right: 0,
+            }}
+          />
         </AnimatedScrollView>
       </View>
     )

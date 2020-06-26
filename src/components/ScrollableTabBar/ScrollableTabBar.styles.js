@@ -7,7 +7,7 @@ export default StyleSheet.create({
   },
   contentContainer: {
     alignItems: 'center',
-    paddingHorizontal: 20
+    paddingHorizontal: 0
   },
   tabContainer: {
     alignItems: 'center',

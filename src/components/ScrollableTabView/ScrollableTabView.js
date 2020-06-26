@@ -224,7 +224,7 @@ class ScrollableTabView extends React.Component {
         scrollEventThrottle={16}
         scrollsToTop={false}
         showsHorizontalScrollIndicator={false}
-        scrollEnabled
+        scrollEnabled={false}
         directionalLockEnabled
         alwaysBounceVertical={false}
         keyboardDismissMode="on-drag"

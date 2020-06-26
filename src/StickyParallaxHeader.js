@@ -300,7 +300,8 @@ class StickyParallaxHeader extends Component {
       parallaxHeight,
       tabs,
       bounces,
-      scrollEvent
+      scrollEvent,
+      onScroll
     } = this.props
     const { currentPage, isFolded } = this.state
     const scrollHeight = Math.max(parallaxHeight, headerHeight * 2)
@@ -344,6 +345,7 @@ class StickyParallaxHeader extends Component {
               listener: (e) => {
                 this.isCloseToBottom(e.nativeEvent)
                 scrollEvent(e)
+                onScroll(e)
               }
             }
           )}

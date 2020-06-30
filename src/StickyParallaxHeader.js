@@ -89,42 +89,42 @@ class StickyParallaxHeader extends Component {
       if (y > 0 && y < snapToEdgeThreshold) {
         return constants.isAndroid
           ? this.setState(
-              {
-                isFolded: false
-              },
-              scrollNode.scrollTo({ x: 0, y: 0, animated: true })
-            )
+            {
+              isFolded: false
+            },
+            scrollNode.scrollTo({ x: 0, y: 0, animated: true })
+          )
           : timing(snapToEdgeAnimatedValue, {
-              toValue: { x: 0, y: 0 },
-              duration: 400,
-              easing: Easing.out(Easing.cubic),
-              useNativeDriver: true
-            }).start(() => {
-              snapToEdgeAnimatedValue.removeListener(id)
-              this.setState({
-                isFolded: false
-              })
+            toValue: { x: 0, y: 0 },
+            duration: 400,
+            easing: Easing.out(Easing.cubic),
+            useNativeDriver: true
+          }).start(() => {
+            snapToEdgeAnimatedValue.removeListener(id)
+            this.setState({
+              isFolded: false
             })
+          })
       }
       if (y >= snapToEdgeThreshold && y < scrollHeight) {
         return constants.isAndroid
           ? this.setState(
-              {
-                isFolded: true
-              },
-              scrollNode.scrollTo({ x: 0, y: scrollHeight, animated: true })
-            )
+            {
+              isFolded: true
+            },
+            scrollNode.scrollTo({ x: 0, y: scrollHeight, animated: true })
+          )
           : timing(snapToEdgeAnimatedValue, {
-              toValue: { x: 0, y: snap },
-              duration: 400,
-              easing: Easing.out(Easing.cubic),
-              useNativeDriver: true
-            }).start(() => {
-              snapToEdgeAnimatedValue.removeListener(id)
-              this.setState({
-                isFolded: true
-              })
+            toValue: { x: 0, y: snap },
+            duration: 400,
+            easing: Easing.out(Easing.cubic),
+            useNativeDriver: true
+          }).start(() => {
+            snapToEdgeAnimatedValue.removeListener(id)
+            this.setState({
+              isFolded: true
             })
+          })
       }
     }
 
@@ -195,7 +195,7 @@ class StickyParallaxHeader extends Component {
             backgroundColor: isArray
               ? arrayHeaderStyle.backgroundColor
               : backgroundColor || headerStyle?.backgroundColor,
-            ...( transparentHeader && styles.transparentHeader )
+            ...(transparentHeader && styles.transparentHeader)
           })
         }
       >
@@ -249,7 +249,7 @@ class StickyParallaxHeader extends Component {
         style={{
           height: backgroundHeight,
           backgroundColor: tabsContainerBackgroundColor,
-          ...( backgroundImage && styles.transparentBackground )
+          ...(backgroundImage && styles.transparentBackground)
         }}
       >
         {foreground}
@@ -267,7 +267,8 @@ class StickyParallaxHeader extends Component {
       tabsContainerBackgroundColor,
       tabWrapperStyle,
       tabsContainerStyle,
-      headerContent
+      headerContent,
+      opacity
     } = this.props
     const { scrollValue, currentPage, containerWidth } = this.state
 
@@ -284,7 +285,8 @@ class StickyParallaxHeader extends Component {
       tabs,
       tabWrapperStyle,
       tabsContainerStyle,
-      headerContent
+      headerContent,
+      opacity
     }
 
     return <ScrollableTabBar {...props} />
@@ -303,7 +305,7 @@ class StickyParallaxHeader extends Component {
       scrollEvent,
       onScroll,
       containerHeight = new Animated.Value(themes.fullHeight),
-      scaleWidth
+      scaleWidth,
     } = this.props
     const { currentPage, isFolded } = this.state
     const scrollHeight = Math.max(parallaxHeight, headerHeight * 2)
@@ -430,9 +432,9 @@ StickyParallaxHeader.propTypes = {
   tabsContainerBackgroundColor: string,
   tabWrapperStyle: ViewPropTypes.style,
   tabsContainerStyle: ViewPropTypes.style,
-  snapStartThreshold: oneOfType([ bool, number]),
-  snapStopThreshold: oneOfType([ bool, number]),
-  snapValue: oneOfType([ bool, number]),
+  snapStartThreshold: oneOfType([bool, number]),
+  snapStopThreshold: oneOfType([bool, number]),
+  snapValue: oneOfType([bool, number]),
   transparentHeader: bool
 }
 

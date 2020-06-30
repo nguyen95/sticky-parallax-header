@@ -209,6 +209,7 @@ class ScrollableTabView extends React.Component {
 
     return (
       <Animated.ScrollView
+        style={{ marginTop: -1 }}
         horizontal
         pagingEnabled
         automaticallyAdjustContentInsets={false}

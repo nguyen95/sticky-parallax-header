@@ -301,7 +301,9 @@ class StickyParallaxHeader extends Component {
       tabs,
       bounces,
       scrollEvent,
-      onScroll
+      onScroll,
+      containerHeight = new Animated.Value(themes.fullHeight),
+      scaleWidth
     } = this.props
     const { currentPage, isFolded } = this.state
     const scrollHeight = Math.max(parallaxHeight, headerHeight * 2)
@@ -315,7 +317,7 @@ class StickyParallaxHeader extends Component {
     const shouldRenderTabs = tabs && tabs.length > 0
 
     return (
-      <View style={styles.container}>
+      <Animated.View style={[styles.container, { height: containerHeight }, scaleWidth]}>
         {header && this.renderHeader()}
         <AnimatedScrollView
           bounces={bounces}
@@ -399,7 +401,7 @@ class StickyParallaxHeader extends Component {
             }}
           />
         </AnimatedScrollView>
-      </View>
+      </Animated.View>
     )
   }
 }

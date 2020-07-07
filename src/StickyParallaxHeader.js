@@ -268,7 +268,8 @@ class StickyParallaxHeader extends Component {
       tabWrapperStyle,
       tabsContainerStyle,
       headerContent,
-      opacity
+      opacity,
+      hideTabHeader
     } = this.props
     const { scrollValue, currentPage, containerWidth } = this.state
 
@@ -286,7 +287,8 @@ class StickyParallaxHeader extends Component {
       tabWrapperStyle,
       tabsContainerStyle,
       headerContent,
-      opacity
+      opacity,
+      hideTabHeader
     }
 
     return <ScrollableTabBar {...props} />

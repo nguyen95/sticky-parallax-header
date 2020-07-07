@@ -85,7 +85,8 @@ class ScrollableTabBar extends React.PureComponent {
       tabWrapperStyle,
       tabsContainerStyle,
       headerContent,
-      opacity
+      opacity,
+      hideTabHeader = false
     } = this.props
     const { tabUnderlineWidth } = this.state
 
@@ -116,7 +117,7 @@ class ScrollableTabBar extends React.PureComponent {
         ]}
       >
         {headerContent}
-        <ScrollView
+        {!hideTabHeader && <ScrollView
           style={styles.nestedStyle}
           contentContainerStyle={[styles.contentContainer, tabsContainerStyle]}
           ref={(r) => (this.scrollView = r)}
@@ -173,7 +174,7 @@ class ScrollableTabBar extends React.PureComponent {
               }
             ]}
           />
-        </ScrollView>
+        </ScrollView>}
       </View>
     )
   }
